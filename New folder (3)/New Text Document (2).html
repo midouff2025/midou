@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>العد التنازلي لشهادة التعليم المتوسط 2026</title>
+
+<style>
+    body {
+        font-family: sans-serif;
+        background: #f3f3f3;
+        text-align: center;
+        margin: 0;
+        padding: 0 10px;
+        color: #000;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .header {
+        padding: 15px;
+        background: white;
+        margin-bottom: 5px;
+    }
+
+    h1, h2, h3, h4 {
+        margin: 8px;
+        color: #000;
+        font-weight: 900;
+        word-wrap: break-word;
+    }
+
+    .countdown-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 22px;
+        margin-top: 25px;
+        flex-direction: row-reverse;
+        padding: 10px;
+    }
+
+    .circle {
+        width: 30vw;
+        height: 30vw;
+        max-width: 145px;
+        max-height: 145px;
+        min-width: 90px;
+        min-height: 90px;
+        position: relative;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .circle-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 26px;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .label {
+        position: absolute;
+        bottom: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: #000;
+        font-weight: bold;
+    }
+
+    circle {
+        transition: stroke-dashoffset 0.6s ease;
+    }
+
+    @media (max-width: 600px) {
+        .circle-value { font-size: 20px; }
+        .label { font-size: 12px; }
+    }
+
+    @media (max-width: 400px) {
+        .circle-value { font-size: 17px; }
+        .label { font-size: 11px; }
+    }
+</style>
+</head>
+<body>
+
+<!-- موسيقى الخلفية -->
+<audio id="bg-music" autoplay loop>
+    <source src="background.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.addEventListener('load', function() {
+    var audio = document.getElementById('bg-music');
+    audio.play().catch(function() {
+        // إذا منع المتصفح التشغيل التلقائي، يبدأ الصوت عند أول نقرة
+        document.body.addEventListener('click', function() {
+            audio.play();
+        }, { once: true });
+    });
+});
+</script>
+
+<div class="header"></div>
+
+<h1>العد التنازلي لموعد امتحان شهادة التعليم المتوسط 2026</h1>
+
+<!-- النص باللون الأسود الغامق -->
+<h3 style="font-weight: 900; color: #000; margin-top: -5px;">DV : MIDOU CH</h3>
+
+<h3>الوقت المتبقي لموعد شهادة التعليم المتوسط هو:</h3>
+
+<div class="countdown-container">
+
+    <div class="circle">
+        <svg viewBox="0 0 145 145" preserveAspectRatio="xMidYMid meet">
+            <circle cx="72.5" cy="72.5" r="60" stroke="#222" stroke-width="10" fill="none"></circle>
+            <circle id="days-progress" cx="72.5" cy="72.5" r="60"
+                stroke="#ff0000" stroke-width="10" fill="none" stroke-linecap="round"></circle>
+        </svg>
+        <div id="days" class="circle-value">0</div>
+        <div class="label">يوم</div>
+    </div>
+
+    <div class="circle">
+        <svg viewBox="0 0 145 145" preserveAspectRatio="xMidYMid meet">
+            <circle cx="72.5" cy="72.5" r="60" stroke="#222" stroke-width="10" fill="none"></circle>
+            <circle id="hours-progress" cx="72.5" cy="72.5" r="60"
+                stroke="#007bff" stroke-width="10" fill="none" stroke-linecap="round"></circle>
+        </svg>
+        <div id="hours" class="circle-value">0</div>
+        <div class="label">ساعة</div>
+    </div>
+
+    <div class="circle">
+        <svg viewBox="0 0 145 145" preserveAspectRatio="xMidYMid meet">
+            <circle cx="72.5" cy="72.5" r="60" stroke="#222" stroke-width="10" fill="none"></circle>
+            <circle id="minutes-progress" cx="72.5" cy="72.5" r="60"
+                stroke="#ffd000" stroke-width="10" fill="none" stroke-linecap="round"></circle>
+        </svg>
+        <div id="minutes" class="circle-value">0</div>
+        <div class="label">دقيقة</div>
+    </div>
+
+    <div class="circle">
+        <svg viewBox="0 0 145 145" preserveAspectRatio="xMidYMid meet">
+            <circle cx="72.5" cy="72.5" r="60" stroke="#222" stroke-width="10" fill="none"></circle>
+            <circle id="seconds-progress" cx="72.5" cy="72.5" r="60"
+                stroke="#00d34f" stroke-width="10" fill="none" stroke-linecap="round"></circle>
+        </svg>
+        <div id="seconds" class="circle-value">0</div>
+        <div class="label">ثانية</div>
+    </div>
+
+</div>
+
+<br><br>
+<h3>سيتم اجتياز امتحان شهادة التعليم المتوسط دورة 2026 ابتداءً من:</h3>
+<h2>يوم: 01 جوان 2026</h2>
+
+<script>
+const fullCircle = 2 * Math.PI * 60;
+
+function animateProgress(el, percent) {
+    el.style.strokeDasharray = fullCircle;
+    el.style.strokeDashoffset = fullCircle - (fullCircle * percent);
+}
+
+function updateCountdown() {
+    const examDate = new Date("June 1, 2026 08:00:00").getTime();
+    const now = Date.now();
+    const diff = examDate - now;
+
+    if (diff <= 0) return;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+    animateProgress(document.getElementById("seconds-progress"), seconds / 60);
+    animateProgress(document.getElementById("minutes-progress"), minutes / 60);
+    animateProgress(document.getElementById("hours-progress"), hours / 24);
+
+    const totalDays = diff / (1000 * 60 * 60 * 24);
+    const fullPeriod = (examDate - new Date("Jan 1, 2026").getTime()) / (1000 * 60 * 60 * 24);
+    const percentDays = 1 - (totalDays / fullPeriod);
+
+    animateProgress(document.getElementById("days-progress"), percentDays);
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+</script>
+
+</body>
+</html>
